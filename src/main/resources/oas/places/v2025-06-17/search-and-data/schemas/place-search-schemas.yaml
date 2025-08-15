@@ -1,0 +1,304 @@
+openapi: 3.0.3
+components:
+  schemas:
+    Place:
+      type: object
+      properties:
+        fsq_place_id:
+          type: string
+        latitude:
+          type: object
+          additionalProperties: true
+        longitude:
+          type: object
+          additionalProperties: true
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
+        chains:
+          type: array
+          items:
+            $ref: '#/components/schemas/Chain'
+        date_closed:
+          type: string
+          format: date-time
+        date_created:
+          type: string
+          format: date-time
+        date_refreshed:
+          type: string
+          format: date-time
+        description:
+          type: string
+        distance:
+          type: integer
+          format: int32
+        email:
+          type: string
+        extended_location:
+          $ref: '#/components/schemas/ExtendedLocation'
+        attributes:
+          $ref: '#/components/schemas/Attributes'
+        hours:
+          $ref: '#/components/schemas/Hours'
+        hours_popular:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegularHours'
+        link:
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        menu:
+          type: string
+        name:
+          type: string
+        photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/Photo'
+        popularity:
+          type: number
+          format: double
+        related_places:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelatedPlace'
+        social_media:
+          $ref: '#/components/schemas/SocialMedia'
+        stats:
+          $ref: '#/components/schemas/Stats'
+        store_id:
+          type: string
+        tastes:
+          type: array
+          items:
+            type: string
+        tel:
+          type: string
+        tips:
+          type: array
+          items:
+              $ref: '#/components/schemas/PhotoTip'
+        verified:
+          type: boolean
+        unresolved_flags:
+          type: array
+          items:
+            type: string
+        veracity_rating:
+            type: object
+            additionalProperties: true
+        website:
+          type: string
+
+    Category:
+      type: object
+      properties:
+        fsq_category_id:
+          type: string
+        name:
+          type: string
+        icon:
+          $ref: '#/components/schemas/Photo'
+
+    Chain:
+      type: object
+      properties:
+        fsq_chain_id:
+          type: string
+        name:
+          type: string
+        logo:
+          $ref: '#/components/schemas/Photo'
+        parent_id:
+          type: string
+
+    Photo:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        prefix:
+          type: string
+        suffix:
+          type: string
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+        classifications:
+          type: array
+          items:
+            type: string
+        tip:
+          $ref: '#/components/schemas/PhotoTip'
+    PhotoTip:
+      type: object
+      properties:
+        id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        text:
+          type: string
+        url:
+          type: string
+        photo:
+          type: string
+        lang:
+          type: string
+        agree_count:
+          type: integer
+        disagree_count:
+          type: integer
+
+    ExtendedLocation:
+      type: object
+      properties:
+        dma:
+          type: string
+        census_block_id:
+          type: string
+
+    Attributes:
+      type: object
+      properties:
+        restroom:
+          type: object
+          additionalProperties: true
+        outdoor_seating:
+          type: object
+          additionalProperties: true
+        atm:
+          type: object
+          additionalProperties: true
+        has_parking:
+          type: object
+          additionalProperties: true
+        wifi:
+          type: object
+          additionalProperties: true
+        delivery:
+          type: object
+          additionalProperties: true
+        reservations:
+          type: object
+          additionalProperties: true
+        takes_credit_card:
+          type: object
+          additionalProperties: true
+
+    Hours:
+      type: object
+      properties:
+        display:
+          type: string
+        is_local_holiday:
+          type: boolean
+        open_now:
+          type: boolean
+        regular:
+          type: array
+          items:
+            $ref: '#/components/schemas/RegularHours'
+    RegularHours:
+      type: object
+      properties:
+        close:
+          type: string
+        day:
+          type: integer
+          format: int32
+        open:
+          type: string
+
+    Location:
+      type: object
+      properties:
+        address:
+          type: string
+        locality:
+          type: string
+        region:
+          type: string
+        postcode:
+          type: string
+        admin_region:
+          type: string
+        post_town:
+          type: string
+        po_box:
+          type: string
+        country:
+          type: string
+        formatted_address:
+          type: string
+
+    RelatedPlace:
+      type: object
+      properties:
+        parent:
+          $ref: '#/components/schemas/Place'
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/Place'
+
+    SocialMedia:
+      type: object
+      properties:
+        facebook_id:
+          type: string
+        instagram:
+          type: string
+        twitter:
+          type: string
+
+    Stats:
+      type: object
+      properties:
+        total_photos:
+          type: integer
+          format: int32
+        total_ratings:
+          type: integer
+          format: int64
+        total_tips:
+          type: integer
+          format: int32
+
+    Context:
+      type: object
+      properties:
+        geo_bounds:
+          $ref: '#/components/schemas/GeoBounds'
+
+    GeoBounds:
+      type: object
+      properties:
+        circle:
+          $ref: '#/components/schemas/Circle'
+    Circle:
+       type: object
+       properties:
+         center:
+           $ref: '#/components/schemas/Center'
+         radius:
+           type: integer
+           format: int32
+
+    Center:
+      type: object
+      properties:
+        latitude:
+          type: number
+        longitude:
+          type: number

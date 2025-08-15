@@ -1,0 +1,20 @@
+openapi: 3.0.3
+
+security:
+  - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+
+  parameters:
+    X-Places-Api-Version:
+      name: X-Places-Api-Version
+      in: header
+      description: The version of the API to use.
+      required: true
+      schema:
+         type: string
+         default: v2025-06-17

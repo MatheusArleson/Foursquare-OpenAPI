@@ -1,27 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.acme.oas</groupId>
-	<artifactId>foursquare-oas</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+    <artifactId>foursquare-oas</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
     <name>Foursquare API OAS</name>
-	<description>Collection of Foursquare APIs in OpenAPI Contract formats</description>
+    <description>Collection of Foursquare APIs in OpenAPI Contract formats</description>
 
-	<properties>
-		<java.version>21</java.version>
+    <properties>
+        <java.version>21</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <plugin.oas-merger.version>1.0.5</plugin.oas-merger.version>
+
+        <dep.swagger-parser.version>2.1.31</dep.swagger-parser.version>
+        <dep.commons-lang3.version>3.18.0</dep.commons-lang3.version>
+        <dep.commons-codec.version>1.19.0</dep.commons-codec.version>
+
+        <dep.junit-jupiter-api.version>5.13.4</dep.junit-jupiter-api.version>
+        <dep.junit-jupiter-params.version>5.11.0</dep.junit-jupiter-params.version>
+        <dep.mockito-junit-jupiter.version>5.18.0</dep.mockito-junit-jupiter.version>
+        <dep.assertj-core.version>3.27.4</dep.assertj-core.version>
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.swagger.parser.v3/swagger-parser -->
+        <dependency>
+            <groupId>io.swagger.parser.v3</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>${dep.swagger-parser.version}</version>
+        </dependency>
 
-	</dependencies>
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${dep.commons-lang3.version}</version>
+        </dependency>
 
-	<build>
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${dep.commons-codec.version}</version>
+        </dependency>
 
-	</build>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${dep.junit-jupiter-api.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${dep.junit-jupiter-params.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${dep.mockito-junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${dep.assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.rameshkp</groupId>
+                <artifactId>openapi-merger-maven-plugin</artifactId>
+                <version>${plugin.oas-merger.version}</version>
+                <executions>
+                    <execution>
+                        <id>search-and-data-oas-merge</id>
+                        <goals>
+                            <goal>merge</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputDir>${project.basedir}/src/main/resources/oas/places/v2025-06-17</inputDir>
+                            <outputDir>${project.basedir}/generated/oas/places/v2025-06-17</outputDir>
+                            <outputFileName>places-v2025-06-17-api</outputFileName>
+                            <openApi>
+                                <version>3.0.3</version>
+                                <info>
+                                    <title>Foursquare Places API</title>
+                                    <description>
+                                        OpenAPI contract for the Foursquare Places Search endpoint. See
+                                        https://docs.foursquare.com/fsq-developers-places/reference/places-api-overview
+                                    </description>
+                                    <version>2025-06-17</version>
+                                </info>
+                                <servers>
+                                    <server>
+                                        <url>https://places-api.foursquare.com</url>
+                                        <description>Foursquare Places API Server</description>
+                                    </server>
+                                </servers>
+                            </openApi>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
