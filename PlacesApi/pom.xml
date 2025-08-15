@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.acme.oas</groupId>
+        <artifactId>foursquare-oas</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>PlacesApi</artifactId>
+
+    <properties>
+        <oas.placesapi.version>v2025-06-17</oas.placesapi.version>
+        <oas.placesapi.src.dir>${oas.src.basedir}/places/${oas.placesapi.version}</oas.placesapi.src.dir>
+        <oas.placesapi.generated.dir>${oas.generated.basedir}/places/${oas.placesapi.version}</oas.placesapi.generated.dir>
+        <oas.placesapi.file.name>places-${oas.placesapi.version}-api</oas.placesapi.file.name>
+
+        <postman.placesapi.generated.dir>${postman.generated.basedir}/places/${oas.placesapi.version}</postman.placesapi.generated.dir>
+
+        <oas.placesapi.client.packageName>com.acme.oas.placesapi</oas.placesapi.client.packageName>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.rameshkp</groupId>
+                <artifactId>openapi-merger-maven-plugin</artifactId>
+                <version>${plugin.oas-merger.version}</version>
+
+                <!-- OAS: Merge -->
+                <executions>
+                    <execution>
+                        <id>places-api-oas-merge</id>
+                        <goals>
+                            <goal>merge</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <inputDir>${oas.placesapi.src.dir}</inputDir>
+                            <outputDir>${oas.placesapi.generated.dir}</outputDir>
+                            <outputFileName>${oas.placesapi.file.name}</outputFileName>
+                            <openApi>
+                                <version>3.0.3</version>
+                                <info>
+                                    <title>Foursquare Places API</title>
+                                    <description>
+                                        OpenAPI contract for the Foursquare Places Search endpoint. See https://docs.foursquare.com/fsq-developers-places/reference/places-api-overview
+                                    </description>
+                                    <version>v2025-06-17</version>
+                                </info>
+                                <servers>
+                                    <server>
+                                        <url>https://places-api.foursquare.com</url>
+                                        <description>Foursquare Places API Server</description>
+                                    </server>
+                                </servers>
+                            </openApi>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${plugin.openapi-generator-maven-plugin.version}</version>
+                <executions>
+                    <!-- OAS: Postman -->
+                    <execution>
+                        <id>places-api-postman-generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${oas.placesapi.generated.dir}/${oas.placesapi.file.name}.yaml</inputSpec>
+                            <generatorName>postman-collection</generatorName>
+                            <output>${postman.placesapi.generated.dir}</output>
+                            <cleanupOutput>true</cleanupOutput>
+                            <configOptions>
+                                <folderStrategy>Tags</folderStrategy>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+
+                    <!-- OAS Codegen: PetStore API: Client -->
+                    <execution>
+                        <id>places-api-java-client</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>
+                                ${oas.placesapi.generated.dir}/${oas.placesapi.file.name}.yaml
+                            </inputSpec>
+                            <output>
+                                ${project.build.directory}/generated-sources/oas/places/client
+                            </output>
+                            <cleanupOutput>true</cleanupOutput>
+                            <generatorName>java</generatorName>
+                            <ignoreFileOverride>
+                                ${project.basedir}/.places-api-client-openapi-generator-ignore
+                            </ignoreFileOverride>
+
+                            <verbose>false</verbose>
+                            <logToStderr>true</logToStderr>
+                            <skipOverwrite>false</skipOverwrite>
+                            <skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
+                            <strictSpec>false</strictSpec>
+
+                            <packageName>${oas.placesapi.client.packageName}</packageName>
+                            <apiPackage>${oas.placesapi.client.packageName}.api</apiPackage>
+                            <modelPackage>${oas.placesapi.client.packageName}.model</modelPackage>
+                            <invokerPackage>${oas.placesapi.client.packageName}.invoker</invokerPackage>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+
+                            <configOptions>
+                                <library>native</library>
+                                <serializationLibrary>jackson</serializationLibrary>
+                                <performBeanValidation>true</performBeanValidation>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useSingleRequestParameter>true</useSingleRequestParameter>
+                                <useGzipFeature>true</useGzipFeature>
+                                <useAbstractionForFiles>true</useAbstractionForFiles>
+
+                                <useJakartaEe>true</useJakartaEe>
+                                <annotationLibrary>swagger2</annotationLibrary>
+                                <documentationProvider>none</documentationProvider>
+                                <generateBuilders>true</generateBuilders>
+                                <generateClientAsBean>true</generateClientAsBean>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+        </plugins>
+    </build>
+
+</project>
