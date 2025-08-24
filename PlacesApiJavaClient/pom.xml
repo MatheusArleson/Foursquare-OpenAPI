@@ -21,11 +21,9 @@
         <oas.placesapi.codegen.spec.path>${oas.placesapi.spec.copy.path}/${oas.placesapi.spec.dependency.path}</oas.placesapi.codegen.spec.path>
 
         <oas.placesapi.codegen.client.output.dir>${project.build.directory}/generated-sources</oas.placesapi.codegen.client.output.dir>
-<!--        <oas.placesapi.codegen.client.output.dir>${project.basedir}</oas.placesapi.codegen.client.output.dir>-->
-
         <oas.placesapi.codegen.client.ignore-file.path>${project.basedir}/.places-api-client-openapi-generator-ignore</oas.placesapi.codegen.client.ignore-file.path>
 
-        <oas.placesapi.codegen.client.library>native</oas.placesapi.codegen.client.library>
+    <oas.placesapi.codegen.client.library>native</oas.placesapi.codegen.client.library>
         <oas.placesapi.codegen.client.packageName>${project.groupId}.placesapi.${oas.placesapi.version}</oas.placesapi.codegen.client.packageName>
     </properties>
 
@@ -82,7 +80,7 @@
                         <configuration>
                             <inputSpec>${oas.placesapi.codegen.spec.path}</inputSpec>
                             <output>${oas.placesapi.codegen.client.output.dir}</output>
-                            <cleanupOutput>false</cleanupOutput>
+                            <cleanupOutput>true</cleanupOutput>
                             <generatorName>java</generatorName>
                             <ignoreFileOverride>${oas.placesapi.codegen.client.ignore-file.path}</ignoreFileOverride>
 
