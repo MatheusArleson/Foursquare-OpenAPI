@@ -3,13 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>com.acme.oas</groupId>
-        <artifactId>foursquare-oas</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
 
-    <artifactId>PlacesApi</artifactId>
+   <parent>
+       <groupId>com.acme.oas.foursquare</groupId>
+        <artifactId>_CommonApiOAS</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+       <relativePath>../_CommonApiOAS/pom.xml</relativePath>
+   </parent>
+
+    <artifactId>PlacesApiOAS</artifactId>
 
     <properties>
         <oas.placesapi.version>v2025-06-17</oas.placesapi.version>
@@ -18,8 +20,6 @@
         <oas.placesapi.file.name>places-${oas.placesapi.version}-api</oas.placesapi.file.name>
 
         <postman.placesapi.generated.dir>${postman.generated.basedir}/places/${oas.placesapi.version}</postman.placesapi.generated.dir>
-
-        <oas.placesapi.client.packageName>com.acme.oas.placesapi</oas.placesapi.client.packageName>
     </properties>
 
     <build>
@@ -83,59 +83,8 @@
                             </configOptions>
                         </configuration>
                     </execution>
-
-                    <!-- OAS Codegen: PetStore API: Client -->
-                    <execution>
-                        <id>places-api-java-client</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <inputSpec>
-                                ${oas.placesapi.generated.dir}/${oas.placesapi.file.name}.yaml
-                            </inputSpec>
-                            <output>
-                                ${project.build.directory}/generated-sources/oas/places/client
-                            </output>
-                            <cleanupOutput>true</cleanupOutput>
-                            <generatorName>java</generatorName>
-                            <ignoreFileOverride>
-                                ${project.basedir}/.places-api-client-openapi-generator-ignore
-                            </ignoreFileOverride>
-
-                            <verbose>false</verbose>
-                            <logToStderr>true</logToStderr>
-                            <skipOverwrite>false</skipOverwrite>
-                            <skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
-                            <strictSpec>false</strictSpec>
-
-                            <packageName>${oas.placesapi.client.packageName}</packageName>
-                            <apiPackage>${oas.placesapi.client.packageName}.api</apiPackage>
-                            <modelPackage>${oas.placesapi.client.packageName}.model</modelPackage>
-                            <invokerPackage>${oas.placesapi.client.packageName}.invoker</invokerPackage>
-                            <generateApiTests>false</generateApiTests>
-                            <generateModelTests>false</generateModelTests>
-
-                            <configOptions>
-                                <library>native</library>
-                                <serializationLibrary>jackson</serializationLibrary>
-                                <performBeanValidation>true</performBeanValidation>
-                                <useBeanValidation>true</useBeanValidation>
-                                <useSingleRequestParameter>true</useSingleRequestParameter>
-                                <useGzipFeature>true</useGzipFeature>
-                                <useAbstractionForFiles>true</useAbstractionForFiles>
-
-                                <useJakartaEe>true</useJakartaEe>
-                                <annotationLibrary>swagger2</annotationLibrary>
-                                <documentationProvider>none</documentationProvider>
-                                <generateBuilders>true</generateBuilders>
-                                <generateClientAsBean>true</generateClientAsBean>
-                            </configOptions>
-                        </configuration>
-                    </execution>
                 </executions>
             </plugin>
-
 
         </plugins>
     </build>

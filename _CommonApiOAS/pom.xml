@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.acme.oas.foursquare</groupId>
+        <artifactId>foursquare-oas</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>_CommonApiOAS</artifactId>
+    <packaging>pom</packaging>
+
+    <properties>
+        <oas.src.basedir>${project.basedir}/src/main/oas</oas.src.basedir>
+        <oas.generated.basedir>${project.basedir}/src/main/resources/oas</oas.generated.basedir>
+        <postman.generated.basedir>${project.basedir}/src/main/resources/postman</postman.generated.basedir>
+
+        <plugin.oas-merger.version>1.0.5</plugin.oas-merger.version>
+        <plugin.openapi-generator-maven-plugin.version>7.14.0</plugin.openapi-generator-maven-plugin.version>
+
+        <dep-test.swagger-parser.version>2.1.31</dep-test.swagger-parser.version>
+        <dep-test.commons-lang3.version>3.18.0</dep-test.commons-lang3.version>
+        <dep-test.commons-codec.version>1.19.0</dep-test.commons-codec.version>
+        <dep-test.junit-jupiter-api.version>5.13.4</dep-test.junit-jupiter-api.version>
+        <dep-test.junit-jupiter-params.version>5.11.0</dep-test.junit-jupiter-params.version>
+        <dep-test.mockito-junit-jupiter.version>5.18.0</dep-test.mockito-junit-jupiter.version>
+        <dep-test.assertj-core.version>3.27.4</dep-test.assertj-core.version>
+    </properties>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${dep-test.junit-jupiter-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${dep-test.junit-jupiter-params.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${dep-test.mockito-junit-jupiter.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${dep-test.assertj-core.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.swagger.parser.v3/swagger-parser -->
+        <dependency>
+            <groupId>io.swagger.parser.v3</groupId>
+            <artifactId>swagger-parser</artifactId>
+            <version>${dep-test.swagger-parser.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${dep-test.commons-lang3.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${dep-test.commons-codec.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+</project>

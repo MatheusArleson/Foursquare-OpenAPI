@@ -1,4 +1,4 @@
-package com.acme.oas.foursquare.placesapi;
+package com.acme.oas.foursquare;
 
 import org.junit.jupiter.params.provider.Arguments;
 
@@ -10,9 +10,10 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface PlacesApiOas {
+//TODO move this test to a global module so all OAS Tests can benefit from it
+public interface ApiOasTest {
 
-    String GENERATED_OAS_BASE_DIR = "generated/oas";
+    String GENERATED_OAS_BASE_DIR = "src/main/resources/oas";
     String GENERATED_OAS_FILE_NAME_SUFFIX = "-api.yaml";
 
     private static List<File> listAllGenerateOasFiles() throws IOException {
@@ -28,9 +29,8 @@ public interface PlacesApiOas {
     }
 
     static Stream<Arguments> getAllGeneratedOasFiles() throws IOException {
-        List<File> generatedOasFiles = PlacesApiOas.listAllGenerateOasFiles();
+        List<File> generatedOasFiles = ApiOasTest.listAllGenerateOasFiles();
         return generatedOasFiles.stream().map(Arguments::of);
     }
-
 
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.acme.oas.foursquare</groupId>
+        <artifactId>_CommonApiJavaClient</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../_CommonApiJavaClient/pom.xml</relativePath>
+    </parent>
+
+    <artifactId>PlacesApiJavaClient</artifactId>
+
+    <properties>
+        <oas.placesapi.version>v2025-06-17</oas.placesapi.version>
+
+        <!-- TODO check why this property is not expanded by maven plugin at runtime. ? bug on plugin ? -->
+        <oas.placesapi.spec.dependency.path>oas/places/v2025-06-17/places-v2025-06-17-api.yaml</oas.placesapi.spec.dependency.path>
+        <oas.placesapi.spec.copy.path>${project.basedir}/src/main/resources</oas.placesapi.spec.copy.path>
+
+        <oas.placesapi.codegen.spec.path>${oas.placesapi.spec.copy.path}/${oas.placesapi.spec.dependency.path}</oas.placesapi.codegen.spec.path>
+
+        <oas.placesapi.codegen.client.output.dir>${project.build.directory}/generated-sources</oas.placesapi.codegen.client.output.dir>
+<!--        <oas.placesapi.codegen.client.output.dir>${project.basedir}</oas.placesapi.codegen.client.output.dir>-->
+
+        <oas.placesapi.codegen.client.ignore-file.path>${project.basedir}/.places-api-client-openapi-generator-ignore</oas.placesapi.codegen.client.ignore-file.path>
+
+        <oas.placesapi.codegen.client.library>native</oas.placesapi.codegen.client.library>
+        <oas.placesapi.codegen.client.packageName>${project.groupId}.placesapi.${oas.placesapi.version}</oas.placesapi.codegen.client.packageName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.acme.oas.foursquare</groupId>
+            <artifactId>PlacesApiOAS</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.8.1</version>
+                <executions>
+                    <execution>
+                        <id>placesapi-oas-copy</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.acme.oas.foursquare</groupId>
+                                    <artifactId>PlacesApiOAS</artifactId>
+                                    <version>0.0.1-SNAPSHOT</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${oas.placesapi.spec.copy.path}</outputDirectory>
+                                    <includes>${oas.placesapi.spec.dependency.path}</includes>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${plugin.openapi-generator-maven-plugin.version}</version>
+
+                <!-- OAS Codegen: Places API: Client -->
+                <executions>
+                    <execution>
+                        <id>places-api-java-client</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${oas.placesapi.codegen.spec.path}</inputSpec>
+                            <output>${oas.placesapi.codegen.client.output.dir}</output>
+                            <cleanupOutput>false</cleanupOutput>
+                            <generatorName>java</generatorName>
+                            <ignoreFileOverride>${oas.placesapi.codegen.client.ignore-file.path}</ignoreFileOverride>
+
+                            <verbose>false</verbose>
+                            <logToStderr>true</logToStderr>
+                            <skipOverwrite>false</skipOverwrite>
+                            <skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
+                            <strictSpec>false</strictSpec>
+
+                            <packageName>${oas.placesapi.codegen.client.packageName}</packageName>
+                            <apiPackage>${oas.placesapi.codegen.client.packageName}.api</apiPackage>
+                            <modelPackage>${oas.placesapi.codegen.client.packageName}.model</modelPackage>
+                            <invokerPackage>${oas.placesapi.codegen.client.packageName}.invoker</invokerPackage>
+                            <generateApiTests>false</generateApiTests>
+                            <generateModelTests>false</generateModelTests>
+
+                            <configOptions>
+                                <library>${oas.placesapi.codegen.client.library}</library>
+                                <serializationLibrary>jackson</serializationLibrary>
+                                <performBeanValidation>true</performBeanValidation>
+                                <useBeanValidation>true</useBeanValidation>
+                                <useSingleRequestParameter>true</useSingleRequestParameter>
+                                <useGzipFeature>true</useGzipFeature>
+                                <useAbstractionForFiles>true</useAbstractionForFiles>
+
+                                <useJakartaEe>true</useJakartaEe>
+                                <annotationLibrary>swagger2</annotationLibrary>
+                                <documentationProvider>none</documentationProvider>
+                                <generateBuilders>true</generateBuilders>
+                                <generateClientAsBean>true</generateClientAsBean>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

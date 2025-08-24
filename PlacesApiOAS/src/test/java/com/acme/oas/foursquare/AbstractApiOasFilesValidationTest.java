@@ -1,14 +1,12 @@
-package com.acme.oas.foursquare.placesapi;
+package com.acme.oas.foursquare;
 
 import io.swagger.parser.OpenAPIParser;
 import io.swagger.v3.parser.core.models.AuthorizationValue;
 import io.swagger.v3.parser.core.models.ParseOptions;
 import io.swagger.v3.parser.core.models.SwaggerParseResult;
 import org.apache.commons.io.IOUtils;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,11 +16,11 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ExtendWith(MockitoExtension.class)
-public class PlacesApiOasFilesValidationTest {
+//TODO move this test to a global module so all OAS Tests can benefit from it
+public abstract class AbstractApiOasFilesValidationTest {
 
     @ParameterizedTest
-    @MethodSource("com.acme.oas.foursquare.placesapi.PlacesApiOas#getAllGeneratedOasFiles")
+    @MethodSource("com.acme.oas.foursquare.ApiOasTest#getAllGeneratedOasFiles")
     void shouldValidateOasFiles(File generatedOasFile) throws Exception {
         //GIVEN
         try (InputStream is = new FileInputStream(generatedOasFile)) {

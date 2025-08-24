@@ -1,0 +1,25 @@
+# Folders
+**/.github/**
+**/gradle/**
+**/api/**
+
+# Root Folder Files
+**/.gitignore
+**/.travis.yml
+**/build.gradle
+**/build.sbt
+**/git_push.sh
+**/gradle.properties
+**/gradlew
+**/gradlew.bat
+**/pom.xml
+**/settings.gradle
+
+**/.openapi-generator-ignore
+
+# Specific Files
+**/src/main/AndroidManifest.xml
+
+# Documentation
+**/docs/**
+**/README.md
