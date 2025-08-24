@@ -4,8 +4,8 @@
 
    <parent>
        <groupId>com.acme.oas.foursquare</groupId>
-        <artifactId>_CommonApiOAS</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>_common-api-oas</artifactId>
+        <version>0.0.2-SNAPSHOT</version>
        <relativePath>../_CommonApiOAS/pom.xml</relativePath>
    </parent>
 

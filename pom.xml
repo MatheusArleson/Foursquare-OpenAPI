@@ -4,7 +4,7 @@
 
     <groupId>com.acme.oas.foursquare</groupId>
     <artifactId>foursquare-oas</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Foursquare API OAS</name>
@@ -31,8 +31,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <project.scm.id>github</project.scm.id>
-
-        <plugin.maven.release-plugin.version>3.1.1</plugin.maven.release-plugin.version>
     </properties>
 
     <distributionManagement>
