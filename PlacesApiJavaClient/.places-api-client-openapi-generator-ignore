@@ -1,6 +1,7 @@
 # Folders
 **/.github/**
 **/gradle/**
+**/api/openapi.yaml
 
 # Root Folder Files
 **/.gitignore
