@@ -7,11 +7,11 @@ components:
         fsq_place_id:
           type: string
         latitude:
-          type: object
-          additionalProperties: true
+          type: number
+          format: double
         longitude:
-          type: object
-          additionalProperties: true
+          type: number
+          format: double
         categories:
           type: array
           items:
@@ -25,10 +25,10 @@ components:
           format: date-time
         date_created:
           type: string
-          format: date-time
+          format: date
         date_refreshed:
           type: string
-          format: date-time
+          format: date
         description:
           type: string
         distance:
@@ -62,9 +62,8 @@ components:
           type: number
           format: double
         related_places:
-          type: array
-          items:
-            $ref: '#/components/schemas/RelatedPlace'
+          type: object
+          $ref: '#/components/schemas/RelatedPlace'
         social_media:
           $ref: '#/components/schemas/SocialMedia'
         stats:

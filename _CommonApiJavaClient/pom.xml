@@ -21,6 +21,8 @@
         <dep.jackson-datatype-jsr310.version>2.19.2</dep.jackson-datatype-jsr310.version>
         <dep.jackson-databind-nullable.version>0.2.6</dep.jackson-databind-nullable.version>
         <dep.swagger-annotations.version>2.2.35</dep.swagger-annotations.version>
+        <dep.commons-lang3.version>3.18.0</dep.commons-lang3.version>
+        <dep.apache.commons-io.version>2.20.0</dep.apache.commons-io.version>
     </properties>
 
     <dependencies>
@@ -71,6 +73,20 @@
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
             <version>${dep.swagger-annotations.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${dep.commons-lang3.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${dep.apache.commons-io.version}</version>
         </dependency>
 
     </dependencies>
