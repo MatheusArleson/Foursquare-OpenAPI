@@ -45,7 +45,7 @@ Repo for:
  <dependencies>
     <dependency>
         <groupId>com.acme.oas.foursquare</groupId>
-        <artifactId>API_NAME_YOU_WANT_HER-api-java-client</artifactId>
+        <artifactId>API_NAME_YOU_WANT_HERE-api-java-client</artifactId>
         <version>CHECK_LATEST_VERSION_AND_PLACE_IT_HERE</version>
     </dependency>
 </dependencies>
@@ -64,7 +64,7 @@ public class Main {
     
     // IF NEEDED, you can set a custom base path for the API
     //private static final String API_BASE_PATH = "https://places-api.foursquare.com/places/search";
-    private static final String API_VERSION = "v2025_06_17";
+    private static final String API_VERSION = "2025_06_17";
     private static final String API_TOKEN = "SET_YOUR_API_TOKEN_HERE";
 
     private static final double longitude = 0; // Example: -73.935242
