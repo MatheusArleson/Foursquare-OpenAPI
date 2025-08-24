@@ -64,7 +64,7 @@ public class Main {
     
     // IF NEEDED, you can set a custom base path for the API
     //private static final String API_BASE_PATH = "https://places-api.foursquare.com/places/search";
-    private static final String API_VERSION = "2025_06_17";
+    private static final String API_VERSION = "2025-06-17";
     private static final String API_TOKEN = "SET_YOUR_API_TOKEN_HERE";
 
     private static final double longitude = 0; // Example: -73.935242
