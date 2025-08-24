@@ -5,11 +5,11 @@
    <parent>
        <groupId>com.acme.oas.foursquare</groupId>
         <artifactId>_CommonApiOAS</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
        <relativePath>../_CommonApiOAS/pom.xml</relativePath>
    </parent>
 
-    <artifactId>PlacesApiOAS</artifactId>
+    <artifactId>places-api-oas</artifactId>
 
     <properties>
         <oas.placesapi.version>v2025-06-17</oas.placesapi.version>

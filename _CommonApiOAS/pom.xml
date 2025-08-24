@@ -5,10 +5,10 @@
     <parent>
         <groupId>com.acme.oas.foursquare</groupId>
         <artifactId>foursquare-oas</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>_CommonApiOAS</artifactId>
+    <artifactId>_common-api-oas</artifactId>
     <packaging>pom</packaging>
 
     <properties>

@@ -5,11 +5,11 @@
     <parent>
         <groupId>com.acme.oas.foursquare</groupId>
         <artifactId>_CommonApiJavaClient</artifactId>
-        <version>0.0.2-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
         <relativePath>../_CommonApiJavaClient/pom.xml</relativePath>
     </parent>
 
-    <artifactId>PlacesApiJavaClient</artifactId>
+    <artifactId>places-api-java-client</artifactId>
 
     <properties>
         <oas.placesapi.version>v2025-06-17</oas.placesapi.version>
@@ -32,8 +32,8 @@
     <dependencies>
         <dependency>
             <groupId>com.acme.oas.foursquare</groupId>
-            <artifactId>PlacesApiOAS</artifactId>
-            <version>0.0.2-SNAPSHOT</version>
+            <artifactId>places-api-oas</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
