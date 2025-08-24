@@ -13,6 +13,7 @@ paths:
       tags:
         - Places
       parameters:
+        - $ref: '../api.yaml#/components/parameters/apiVersion'
         - name: query
           in: query
           description: A string to be matched against all content for this place, including but not limited to venue name, category, telephone number, taste, and tips.

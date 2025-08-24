@@ -24,6 +24,13 @@ paths:
         ne & sw (rectangular boundary)"
       operationId: placesSearch
       parameters:
+      - name: X-Places-Api-Version
+        in: header
+        description: The version of the API to use.
+        required: true
+        schema:
+          type: string
+          default: v2025-06-17
       - name: query
         in: query
         description: "A string to be matched against all content for this place, including\
@@ -527,7 +534,7 @@ components:
           type: integer
           format: int32
   parameters:
-    X-Places-Api-Version:
+    apiVersion:
       name: X-Places-Api-Version
       in: header
       description: The version of the API to use.

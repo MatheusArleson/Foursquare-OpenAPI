@@ -10,7 +10,7 @@ components:
       scheme: bearer
 
   parameters:
-    X-Places-Api-Version:
+    apiVersion:
       name: X-Places-Api-Version
       in: header
       description: The version of the API to use.

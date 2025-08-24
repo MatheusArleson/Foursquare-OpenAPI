@@ -26,6 +26,12 @@
         "value": "application/json",
         "description": "",
         "disabled": false
+        },
+        {
+        "key": "X-Places-Api-Version",
+        "value": "v2025-06-17",
+        "description": "The version of the API to use.",
+        "disabled": false
         }
     ],
     "body": {
