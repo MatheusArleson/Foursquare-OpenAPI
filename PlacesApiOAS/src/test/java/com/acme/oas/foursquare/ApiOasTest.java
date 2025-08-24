@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 //TODO move this test to a global module so all OAS Tests can benefit from it
+@SuppressWarnings("unused") // Abstraction references it by full classpath on annotation
 public interface ApiOasTest {
 
     String GENERATED_OAS_BASE_DIR = "src/main/resources/oas";
