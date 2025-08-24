@@ -4,7 +4,7 @@
 
     <groupId>com.acme.oas.foursquare</groupId>
     <artifactId>foursquare-oas</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <packaging>pom</packaging>
 
     <name>Foursquare API OAS</name>
@@ -14,7 +14,8 @@
         <url>https://github.com/MatheusArleson/Foursquare-OpenAPI.git</url>
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
-    </scm>
+      <tag>foursquare-oas-0.0.2</tag>
+  </scm>
 
     <modules>
         <module>_CommonApiOAS</module>
